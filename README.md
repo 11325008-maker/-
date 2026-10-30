@@ -32,6 +32,7 @@
 步驟 6：批量安裝 Python 依賴套件
 利用 pip 套件管理器一次安裝所有記錄在 requirements.txt 中的套件。
 
+![03](https://github.com/11325008-maker/-/blob/main/1-6.png)
 Bash
 !pip install -r /content/requirements.txt
 !pip install -r /content/requirements.txt：執行 pip install 指令，並透過 -r 參數批次讀取並安裝指定的文字檔中所列出的 Python 套件。
