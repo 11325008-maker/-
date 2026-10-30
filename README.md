@@ -6,12 +6,7 @@
 步驟 1：初始化環境與設定 GPU 資源
 在此步驟中，我們導入必要的 Python 套件，並指定系統使用第一張 GPU 卡進行運算。
 
-
-import os
-from google.colab import drive
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-import matplotlib.pyplot as plt
-%matplotlib inline
+![03](https://github.com/11325008-maker/-/blob/main/1-1.png)
 import os：匯入 Python 的作業系統（OS）模組，用於處理檔案路徑與環境變數。
 
 from google.colab import drive：從 Colab 專用套件中匯入 drive 模組，準備掛載 Google 云端硬碟。
@@ -23,6 +18,7 @@ import matplotlib.pyplot as plt：匯入 Matplotlib 的繪圖模組，用於後�
 %matplotlib inline：IPython / Jupyter Notebook 的魔術指令，讓繪製出的圖表直接顯示在 Jupyter 筆記本的儲存格下方。
 
 步驟 2：掛載 Google 雲端硬碟
+
 將個人的 Google Drive 掛載至 Colab 的虛擬機目錄中，以便讀取儲存在雲端硬碟中的專案與權重檔。
 
 Python
