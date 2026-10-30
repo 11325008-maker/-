@@ -1,8 +1,12 @@
-# 115 人工智慧期中報告：Google Colab 跑目標追蹤的test程式碼
-**組員:** 11325003 張博憫 11325008 林禹翔
-
+# 人工智慧期中報告 題目Google Colab 跑目標追蹤的test程式碼
+**組員:** 11325003 張博憫(躺分)11325008 林禹翔
+# 一、實驗目的
+本實驗旨在 Google Colab 環境中建置與執行 video_analyst 視覺物體追蹤專案。透過配置 PyTorch 深度學習環境、安裝必要相依套件與編譯 Cython 評測模組，載入 SiamFCPP 追蹤演算法與對應的預訓練權重，針對 GOT-10k 資料集進行效能推論與測試，以驗證物件追蹤模型的運作流程與追蹤表現。
+# 二、執行步驟
 步驟 1：初始化環境與設定 GPU 資源
 在此步驟中，我們導入必要的 Python 套件，並指定系統使用第一張 GPU 卡進行運算。
+
+![03]()
 
 Python
 import os
@@ -142,3 +146,5 @@ print("可用的執行工具與腳本：")：顯示說明標頭文字。
 Bash
 !cat tools/test_GOT.sh
 !cat tools/test_GOT.sh：使用 Linux 的 cat 指令直接印出 tools/test_GOT.sh 檔案的全文內容，檢視其使用 Python 呼叫 ./main/test.py 以及載入各設定檔（YAML）的命令。
+# 三、實驗結果
+本實驗成功於 Google Colab 環境中完成 video_analyst 視覺追蹤專案的環境建置、GPU 設定與 Google Drive 雲端硬碟掛載。透過配置 PyTorch 深度學習運算資源、編譯 VOT 評測基準所需的 Cython 模組（region.pyx），以及安裝 requirements.txt 中的必要相依套件，已順利完成前置準備。同時，透過檢視 test_GOT.sh 與 SiamFCPP 模型搭配 AlexNet 的設定檔，確認各項參數與預訓練權重路徑皆正確無誤，隨時可供後續執行 GOT-10k 資料集的目標追蹤推論與效能評測。
