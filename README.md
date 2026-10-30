@@ -17,12 +17,7 @@
 步驟 3：複製專案至本機高速暫存空間並切換目錄
 由於雲端硬碟（Google Drive）讀寫速度較慢且可能受限，將專案複製到 Colab 本機的暫存硬碟空間 /content/ 中，可提升讀寫速度與編譯效率。
 
-Bash
-!cp -r '/content/drive/My Drive/video_analyst/' /content/video_analyst
-os.chdir('/content/video_analyst')
-!cp -r '/content/drive/My Drive/video_analyst/' /content/video_analyst：使用 Bash 指令 cp 遞迴複製（-r）雲端硬碟中的 video_analyst 資料夾到 Colab 本機空間 /content/video_analyst。
-
-os.chdir('/content/video_analyst')：使用 Python 切換當前的工作目錄至 /content/video_analyst。
+![03](https://github.com/11325008-maker/-/blob/main/1-3.png)
 
 步驟 4：確認專案目錄內容
 列出當前目錄下的所有檔案與資料夾，確認複製是否完整。
