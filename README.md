@@ -43,23 +43,7 @@
 步骤 8：建立並編譯 VOT 評測工具套件 (pysot/utils)
 為了在本地進行 C/C++ 擴充套件（Cython *.pyx 檔案）的編譯，先將相關程式碼完整複製出來並進行安裝。
 
-Bash
-!rm -rf /content/local_pysot_utils
-!cp -rL /content/video_analyst/videoanalyst/evaluation/vot_benchmark/pysot/utils /content/local_pysot_utils
-
-%cd /content/local_pysot_utils
-
-!python setup.py build_ext --inplace
-!python setup.py install
-!rm -rf /content/local_pysot_utils：強制刪除舊有或暫存的 /content/local_pysot_utils 目錄（包含其子目錄）。
-
-!cp -rL ... /content/local_pysot_utils：遞迴複製（-r）並解開所有軟連結（-L，將實體檔案複製過來），確保取得真實完整的原始碼檔案。
-
-%cd /content/local_pysot_utils：將工作目錄切換至 /content/local_pysot_utils。
-
-!python setup.py build_ext --inplace：執行 Python 安裝腳本，將 Cython 程式碼（如 region.pyx）就地（--inplace）編譯為 C/C++ 二進位檔（.so 檔）。
-
-!python setup.py install：將編譯好的 C 語言擴充模組安裝至 Python 的全域環境中。
+![03](https://github.com/11325008-maker/-/blob/main/1-9.png)
 
 步驟 9：返回專案主目錄並檢視執行腳本
 切換回專案根目錄，並列出可用於模型測試（Test）與訓練（Train）的 Bash 腳本。
