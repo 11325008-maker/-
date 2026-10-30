@@ -34,19 +34,11 @@
 
 ![03](https://github.com/11325008-maker/-/blob/main/1-6.png)
 ![03](https://github.com/11325008-maker/-/blob/main/1-7.png)
-Bash
-!pip install -r /content/requirements.txt
-!pip install -r /content/requirements.txt：執行 pip install 指令，並透過 -r 參數批次讀取並安裝指定的文字檔中所列出的 Python 套件。
 
 步驟 7：再次確認雲端硬碟掛載狀態
 再次執行掛載指令，確保後續讀取或寫入路徑不會因連線問題斷開。
 
-Python
-from google.colab import drive
-drive.mount('/content/drive')
-from google.colab import drive：匯入 Colab 雲端硬碟模組。
-
-drive.mount('/content/drive')：確認並連結雲端硬碟至 /content/drive。
+![03](https://github.com/11325008-maker/-/blob/main/1-8.png)
 
 步骤 8：建立並編譯 VOT 評測工具套件 (pysot/utils)
 為了在本地進行 C/C++ 擴充套件（Cython *.pyx 檔案）的編譯，先將相關程式碼完整複製出來並進行安裝。
