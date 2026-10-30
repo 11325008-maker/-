@@ -44,6 +44,7 @@
 為了在本地進行 C/C++ 擴充套件（Cython *.pyx 檔案）的編譯，先將相關程式碼完整複製出來並進行安裝。
 
 ![03](https://github.com/11325008-maker/-/blob/main/1-9.png)
+![03](https://github.com/11325008-maker/-/blob/main/1-10.png)
 
 步驟 9：返回專案主目錄並檢視執行腳本
 切換回專案根目錄，並列出可用於模型測試（Test）與訓練（Train）的 Bash 腳本。
