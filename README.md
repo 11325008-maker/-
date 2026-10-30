@@ -27,39 +27,7 @@
 步驟 5：建立依賴套件清單 (requirements.txt)
 將專案執行時所需的第三方 Python 套件與版本規定寫入獨立的文字檔中。
 
-Python
-content = """tqdm
-pylint
-yacs
-pillow
-Cython
-yapf==0.28.0
-opencv-python>=4.11.0.86
-numpy>=1.26.0
-torch
-torchvision
-colorama
-numba
-matplotlib
-wget
-shapely
-scipy
-"""
-
-import os
-with open("/content/requirements.txt", "w", encoding="utf-8") as f:
-    f.write(content)
-
-print("requirements.txt 已在本機空間 /content/ 成功儲存！")
-content = """..."""：定義一個包含所有套件名稱與版本限定條件的多行字串變數。
-
-import os：再次確認匯入 OS 模組。
-
-with open("/content/requirements.txt", "w", encoding="utf-8") as f:：以寫入模式（"w"）與 UTF-8 編碼開啟/建立 /content/requirements.txt 檔案。
-
-f.write(content)：將套件清單字串寫入該檔案。
-
-print(...)：在終端機印出完成提示文字。
+![03](https://github.com/11325008-maker/-/blob/main/1-5.png)
 
 步驟 6：批量安裝 Python 依賴套件
 利用 pip 套件管理器一次安裝所有記錄在 requirements.txt 中的套件。
