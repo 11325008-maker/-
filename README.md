@@ -1,14 +1,12 @@
 # 人工智慧期中報告 題目Google Colab 跑目標追蹤的test程式碼
-**組員:** 11325003 張博憫(躺分)11325008 林禹翔
+**組員:** 11325003 張博憫 11325008 林禹翔
 # 一、實驗目的
 本實驗旨在 Google Colab 環境中建置與執行 video_analyst 視覺物體追蹤專案。透過配置 PyTorch 深度學習環境、安裝必要相依套件與編譯 Cython 評測模組，載入 SiamFCPP 追蹤演算法與對應的預訓練權重，針對 GOT-10k 資料集進行效能推論與測試，以驗證物件追蹤模型的運作流程與追蹤表現。
 # 二、執行步驟
 步驟 1：初始化環境與設定 GPU 資源
 在此步驟中，我們導入必要的 Python 套件，並指定系統使用第一張 GPU 卡進行運算。
 
-![03]()
 
-Python
 import os
 from google.colab import drive
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
