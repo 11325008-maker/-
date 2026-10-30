@@ -49,25 +49,10 @@
 步驟 9：返回專案主目錄並檢視執行腳本
 切換回專案根目錄，並列出可用於模型測試（Test）與訓練（Train）的 Bash 腳本。
 
-Python
-import os
-%cd /content/video_analyst
-
-print("可用的執行工具與腳本：")
-!ls tools/
-import os：匯入 OS 模組。
-
-%cd /content/video_analyst：將工作目錄切換回專案主目錄 /content/video_analyst。
-
-print("可用的執行工具與腳本：")：顯示說明標頭文字。
-
-!ls tools/：列出 tools/ 資料夾內包含的測試與訓練腳本（例如 test_GOT.sh, test_VOT.sh 等）。
+![03](https://github.com/11325008-maker/-/blob/main/1-11.png)
 
 步驟 10：查看測試腳本內容 (test_GOT.sh)
 檢視 GOT-10k 資料集測試腳本內部的執行指令與參數設定。
 
-Bash
-!cat tools/test_GOT.sh
-!cat tools/test_GOT.sh：使用 Linux 的 cat 指令直接印出 tools/test_GOT.sh 檔案的全文內容，檢視其使用 Python 呼叫 ./main/test.py 以及載入各設定檔（YAML）的命令。
 # 三、實驗結果
 本實驗成功於 Google Colab 環境中完成 video_analyst 視覺追蹤專案的環境建置、GPU 設定與 Google Drive 雲端硬碟掛載。透過配置 PyTorch 深度學習運算資源、編譯 VOT 評測基準所需的 Cython 模組（region.pyx），以及安裝 requirements.txt 中的必要相依套件，已順利完成前置準備。同時，透過檢視 test_GOT.sh 與 SiamFCPP 模型搭配 AlexNet 的設定檔，確認各項參數與預訓練權重路徑皆正確無誤，隨時可供後續執行 GOT-10k 資料集的目標追蹤推論與效能評測。
