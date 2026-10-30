@@ -7,6 +7,7 @@
 在此步驟中，我們導入必要的 Python 套件，並指定系統使用第一張 GPU 卡進行運算。
 
 ![03](https://github.com/11325008-maker/-/blob/main/1-1.png)
+![03](https://github.com/11325008-maker/-/blob/main/1-13.png)
 
 步驟 2：掛載 Google 雲端硬碟
 
@@ -58,3 +59,6 @@
 
 # 三、實驗結果
 本實驗成功於 Google Colab 環境中完成 video_analyst 視覺追蹤專案的環境建置、GPU 設定與 Google Drive 雲端硬碟掛載。透過配置 PyTorch 深度學習運算資源、編譯 VOT 評測基準所需的 Cython 模組（region.pyx），以及安裝 requirements.txt 中的必要相依套件，已順利完成前置準備。同時，透過檢視 test_GOT.sh 與 SiamFCPP 模型搭配 AlexNet 的設定檔，確認各項參數與預訓練權重路徑皆正確無誤，隨時可供後續執行 GOT-10k 資料集的目標追蹤推論與效能評測。
+
+# 四、結論與心得
+此次期中報告實驗成功在 Google Colab 環境中完成 video_analyst 視覺追蹤專案的環境建置與前置準備。透過掛載雲端硬碟、設定 GPU 運算資源、安裝必要深度學習套件，並成功編譯 VOT 評測基準所需的 Cython 模組，順利打通了程式碼的本機讀寫與編譯權限。此外，透過檢視 test_GOT.sh 測試腳本與 SiamFCPP 搭配 AlexNet 的設定檔，確認了各項參數與預訓練權重路徑皆正確無誤。本次實驗不僅完整走完物件追蹤模型的部署流程，也為後續的效能推論與評測奠定良好基礎。
