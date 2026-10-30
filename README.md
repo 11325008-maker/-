@@ -1,1 +1,144 @@
-# -
+# 115 人工智慧期中報告：Google Colab 跑目標追蹤的test程式碼
+**組員:** 11325003 張博憫 11325008 林禹翔
+
+步驟 1：初始化環境與設定 GPU 資源
+在此步驟中，我們導入必要的 Python 套件，並指定系統使用第一張 GPU 卡進行運算。
+
+Python
+import os
+from google.colab import drive
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+import matplotlib.pyplot as plt
+%matplotlib inline
+import os：匯入 Python 的作業系統（OS）模組，用於處理檔案路徑與環境變數。
+
+from google.colab import drive：從 Colab 專用套件中匯入 drive 模組，準備掛載 Google 云端硬碟。
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"：設定環境變數，指定程式僅使用編號為 0 的 GPU 顯示卡。
+
+import matplotlib.pyplot as plt：匯入 Matplotlib 的繪圖模組，用於後續資料或圖像的視覺化。
+
+%matplotlib inline：IPython / Jupyter Notebook 的魔術指令，讓繪製出的圖表直接顯示在 Jupyter 筆記本的儲存格下方。
+
+步驟 2：掛載 Google 雲端硬碟
+將個人的 Google Drive 掛載至 Colab 的虛擬機目錄中，以便讀取儲存在雲端硬碟中的專案與權重檔。
+
+Python
+drive.mount('/content/drive/')
+drive.mount('/content/drive/')：將 Google 雲端硬碟掛載至 Colab 虛擬機中的 /content/drive/ 資料夾路徑。
+
+步驟 3：複製專案至本機高速暫存空間並切換目錄
+由於雲端硬碟（Google Drive）讀寫速度較慢且可能受限，將專案複製到 Colab 本機的暫存硬碟空間 /content/ 中，可提升讀寫速度與編譯效率。
+
+Bash
+!cp -r '/content/drive/My Drive/video_analyst/' /content/video_analyst
+os.chdir('/content/video_analyst')
+!cp -r '/content/drive/My Drive/video_analyst/' /content/video_analyst：使用 Bash 指令 cp 遞迴複製（-r）雲端硬碟中的 video_analyst 資料夾到 Colab 本機空間 /content/video_analyst。
+
+os.chdir('/content/video_analyst')：使用 Python 切換當前的工作目錄至 /content/video_analyst。
+
+步驟 4：確認專案目錄內容
+列出當前目錄下的所有檔案與資料夾，確認複製是否完整。
+
+Bash
+ls
+ls：Linux 指令，列出當前工作目錄（/content/video_analyst）下的所有檔案與子目錄清單。
+
+步驟 5：建立依賴套件清單 (requirements.txt)
+將專案執行時所需的第三方 Python 套件與版本規定寫入獨立的文字檔中。
+
+Python
+content = """tqdm
+pylint
+yacs
+pillow
+Cython
+yapf==0.28.0
+opencv-python>=4.11.0.86
+numpy>=1.26.0
+torch
+torchvision
+colorama
+numba
+matplotlib
+wget
+shapely
+scipy
+"""
+
+import os
+with open("/content/requirements.txt", "w", encoding="utf-8") as f:
+    f.write(content)
+
+print("requirements.txt 已在本機空間 /content/ 成功儲存！")
+content = """..."""：定義一個包含所有套件名稱與版本限定條件的多行字串變數。
+
+import os：再次確認匯入 OS 模組。
+
+with open("/content/requirements.txt", "w", encoding="utf-8") as f:：以寫入模式（"w"）與 UTF-8 編碼開啟/建立 /content/requirements.txt 檔案。
+
+f.write(content)：將套件清單字串寫入該檔案。
+
+print(...)：在終端機印出完成提示文字。
+
+步驟 6：批量安裝 Python 依賴套件
+利用 pip 套件管理器一次安裝所有記錄在 requirements.txt 中的套件。
+
+Bash
+!pip install -r /content/requirements.txt
+!pip install -r /content/requirements.txt：執行 pip install 指令，並透過 -r 參數批次讀取並安裝指定的文字檔中所列出的 Python 套件。
+
+步驟 7：再次確認雲端硬碟掛載狀態
+再次執行掛載指令，確保後續讀取或寫入路徑不會因連線問題斷開。
+
+Python
+from google.colab import drive
+drive.mount('/content/drive')
+from google.colab import drive：匯入 Colab 雲端硬碟模組。
+
+drive.mount('/content/drive')：確認並連結雲端硬碟至 /content/drive。
+
+步骤 8：建立並編譯 VOT 評測工具套件 (pysot/utils)
+為了在本地進行 C/C++ 擴充套件（Cython *.pyx 檔案）的編譯，先將相關程式碼完整複製出來並進行安裝。
+
+Bash
+!rm -rf /content/local_pysot_utils
+!cp -rL /content/video_analyst/videoanalyst/evaluation/vot_benchmark/pysot/utils /content/local_pysot_utils
+
+%cd /content/local_pysot_utils
+
+!python setup.py build_ext --inplace
+!python setup.py install
+!rm -rf /content/local_pysot_utils：強制刪除舊有或暫存的 /content/local_pysot_utils 目錄（包含其子目錄）。
+
+!cp -rL ... /content/local_pysot_utils：遞迴複製（-r）並解開所有軟連結（-L，將實體檔案複製過來），確保取得真實完整的原始碼檔案。
+
+%cd /content/local_pysot_utils：將工作目錄切換至 /content/local_pysot_utils。
+
+!python setup.py build_ext --inplace：執行 Python 安裝腳本，將 Cython 程式碼（如 region.pyx）就地（--inplace）編譯為 C/C++ 二進位檔（.so 檔）。
+
+!python setup.py install：將編譯好的 C 語言擴充模組安裝至 Python 的全域環境中。
+
+步驟 9：返回專案主目錄並檢視執行腳本
+切換回專案根目錄，並列出可用於模型測試（Test）與訓練（Train）的 Bash 腳本。
+
+Python
+import os
+%cd /content/video_analyst
+
+print("可用的執行工具與腳本：")
+!ls tools/
+import os：匯入 OS 模組。
+
+%cd /content/video_analyst：將工作目錄切換回專案主目錄 /content/video_analyst。
+
+print("可用的執行工具與腳本：")：顯示說明標頭文字。
+
+!ls tools/：列出 tools/ 資料夾內包含的測試與訓練腳本（例如 test_GOT.sh, test_VOT.sh 等）。
+
+步驟 10：查看測試腳本內容 (test_GOT.sh)
+檢視 GOT-10k 資料集測試腳本內部的執行指令與參數設定。
+
+Bash
+!cat tools/test_GOT.sh
+!cat tools/test_GOT.sh：使用 Linux 的 cat 指令直接印出 tools/test_GOT.sh 檔案的全文內容，檢視其使用 Python 呼叫 ./main/test.py 以及載入各設定檔（YAML）的命令。
