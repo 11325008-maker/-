@@ -22,9 +22,7 @@
 步驟 4：確認專案目錄內容
 列出當前目錄下的所有檔案與資料夾，確認複製是否完整。
 
-Bash
-ls
-ls：Linux 指令，列出當前工作目錄（/content/video_analyst）下的所有檔案與子目錄清單。
+![03](https://github.com/11325008-maker/-/blob/main/1-4.png)
 
 步驟 5：建立依賴套件清單 (requirements.txt)
 將專案執行時所需的第三方 Python 套件與版本規定寫入獨立的文字檔中。
